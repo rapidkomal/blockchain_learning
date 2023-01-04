@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract ToDoList{
-    struct Todo{
+contract ToDoList {
+    struct Todo {
         string text;
         string status;
         bool completed;
@@ -13,7 +13,7 @@ contract ToDoList{
 
     Todo[] public todos;
 
-    // constructor 
+    // constructor
     constructor() {
         _owner = msg.sender;
     }
@@ -25,8 +25,8 @@ contract ToDoList{
 
     // creating todo list
     function create(string calldata text_) public {
-       // assert _owner == msg.sender;
-       
+        // assert _owner == msg.sender;
+
         require(msg.sender == _owner, "Only Owner is allowed to do this!");
         //initializing struct
         todos.push(Todo(text_, "INITIATED", false));
@@ -40,9 +40,8 @@ contract ToDoList{
         todo.status = "INITIATED";
 
         todos.push(todo);
-
     }
-    
+
     // change status as pending function
     function statuschange(uint _index, string calldata _status) public {
         require(msg.sender == _owner, "Only Owner is allowed to do this!");
@@ -51,7 +50,15 @@ contract ToDoList{
     }
 
     // get function
-    function get(uint _index) public view returns (string memory text, string memory status, bool completed){
+    function get(uint _index)
+        public
+        view
+        returns (
+            string memory text,
+            string memory status,
+            bool completed
+        )
+    {
         Todo storage todo = todos[_index];
         return (todo.text, todo.status, todo.completed);
     }
@@ -68,5 +75,4 @@ contract ToDoList{
         todo.status = "SUCCESS";
         todo.completed = !todo.completed;
     }
-
 }
