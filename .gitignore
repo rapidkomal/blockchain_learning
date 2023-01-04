@@ -1,3 +1,8 @@
-*.abi
+__pycache__
+.history
+.hypothesis/
+build/
+reports/
 venv
-bin
+.env
+LICENSE
