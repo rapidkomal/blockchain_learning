@@ -7,3 +7,4 @@ venv
 .env
 LICENSE
 .DS_Store
+node_modules
